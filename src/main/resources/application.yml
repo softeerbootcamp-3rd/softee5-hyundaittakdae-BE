@@ -5,8 +5,8 @@ spring:
   # H2 Database ??
   datasource:
     driver-class-name: org.h2.Driver
-    #url: 'jdbc:h2:mem:test'   # H2 DB ?? ?? (In-Memory Mode)
-    url: 'jdbc:h2:~/test'    # H2 DB ?? ?? (Embedded Mode)
+    url: 'jdbc:h2:mem:test'   # H2 DB ?? ?? (In-Memory Mode)
+    #url: 'jdbc:h2:~/test'    # H2 DB ?? ?? (Embedded Mode)
     username: username       # H2 DB ?? ID (??? ??)
     password: 1234        # H2 DB ?? PW (??? ??)
 
