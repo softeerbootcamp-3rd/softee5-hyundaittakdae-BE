@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import hyundai_6th_team.hyundai_6th_team.apiPayload.code.BaseCode;
-import hyundai_6th_team.hyundai_6th_team.apiPayload.statusEnums.SuccessStatus;
+import hyundai_6th_team.hyundai_6th_team.apiPayload.code.statusEnums.SuccessStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

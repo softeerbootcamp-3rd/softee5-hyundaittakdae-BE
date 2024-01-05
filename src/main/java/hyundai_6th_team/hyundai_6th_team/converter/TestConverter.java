@@ -10,4 +10,10 @@ public class TestConverter {
                 .build();
     }
 
+    public static TestResponseDTO.TestExceptionDTO toTestExceptionDTO(Integer flag){
+        return TestResponseDTO.TestExceptionDTO.builder()
+                .flag(flag)
+                .build();
+    }
+
 }

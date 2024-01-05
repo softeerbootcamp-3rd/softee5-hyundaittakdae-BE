@@ -1,4 +1,4 @@
-package hyundai_6th_team.hyundai_6th_team.apiPayload.statusEnums;
+package hyundai_6th_team.hyundai_6th_team.apiPayload.code.statusEnums;
 
 import hyundai_6th_team.hyundai_6th_team.apiPayload.code.BaseCode;
 import hyundai_6th_team.hyundai_6th_team.apiPayload.code.SuccessDTO;

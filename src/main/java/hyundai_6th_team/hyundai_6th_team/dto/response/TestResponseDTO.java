@@ -15,4 +15,12 @@ public class TestResponseDTO {
         String testString;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class TestExceptionDTO{
+        Integer flag;
+    }
+
 }

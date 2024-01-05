@@ -1,4 +1,4 @@
-package hyundai_6th_team.hyundai_6th_team.apiPayload.statusEnums;
+package hyundai_6th_team.hyundai_6th_team.apiPayload.code.statusEnums;
 
 import hyundai_6th_team.hyundai_6th_team.apiPayload.code.BaseErrorCode;
 import hyundai_6th_team.hyundai_6th_team.apiPayload.code.ErrorDTO;
@@ -21,8 +21,7 @@ public enum ErrorStatus implements BaseErrorCode {
     NICKNAME_NOT_EXIST(HttpStatus.BAD_REQUEST, "MEMBER4002", "닉네임은 필수 입니다."),
 
     // 테스트용
-    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "Error 테스트");
-
+    TEST_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "Error 테스트");
 
     private final HttpStatus httpStatus;
     private final String code;
