@@ -21,8 +21,9 @@ public class RestArea {
     @Column(nullable = false, length = 30)
     private String name;
 
-    @Column(nullable = true, length = 30)
-    private Long roadId;
+    @ManyToOne
+    @JoinColumn(name = "road_id")
+    private Road road;
 
     @Column(nullable = false, length = 30)
     private double xpos;
@@ -33,13 +34,17 @@ public class RestArea {
     @Column(nullable = true, length = 30)
     private String imageUrl;
 
+    @Column(nullable = true, length = 100)
+    private String tel;
+
     @Builder
-    public RestArea(Long id, String name, Long roadId, double xpos, double ypos, String imageUrl) {
+    public RestArea(Long id, String name, Road road, double xpos, double ypos, String imageUrl, String tel) { // 순서 꼭 맞춰줘야 함.... 안맞춰주면 특정 속성 null 들어간다.
         this.id = id;
         this.name = name;
-        this.roadId = roadId;
+        this.road = road;
         this.xpos = xpos;
         this.ypos = ypos;
+        this.tel = tel;
         this.imageUrl = imageUrl;
     }
 }

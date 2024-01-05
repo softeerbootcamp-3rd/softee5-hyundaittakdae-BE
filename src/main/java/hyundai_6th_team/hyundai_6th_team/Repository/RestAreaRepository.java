@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RestAreaRepository extends JpaRepository<RestArea,Long> {
 
-
+    public RestArea findByName(String name);
 
 }
