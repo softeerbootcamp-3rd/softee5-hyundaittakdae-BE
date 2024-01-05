@@ -1,16 +1,13 @@
 package hyundai_6th_team.hyundai_6th_team.Parsing;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hyundai_6th_team.hyundai_6th_team.Entity.RestArea;
+import hyundai_6th_team.hyundai_6th_team.entity.RestArea;
 import hyundai_6th_team.hyundai_6th_team.Repository.RestAreaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 
 
 @Service
