@@ -1,45 +1,45 @@
 package hyundai_6th_team.hyundai_6th_team.entity;
 
+import hyundai_6th_team.hyundai_6th_team.entity.common.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table
 @Builder
-public class RestArea {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+public class RestArea extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true, length = 30)
-    private Long roadId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "road_id")
+    private Road road;
 
-    @Column(nullable = false, length = 30)
-    private double xpos;
+    @Column(nullable = false)
+    private float posX;
 
-    @Column(nullable = false, length = 30)
-    private double ypos;
+    @Column(nullable = false)
+    private float posY;
 
-    @Column(nullable = true, length = 30)
+    @Column(nullable = false, length = 15)
+    private String phone;
+
     private String imageUrl;
-
     @Builder
-    public RestArea(Long id, String name, Long roadId, double xpos, double ypos, String imageUrl) {
+    public RestArea(Long id, String name, Road road, float xpos, float ypos, String imageUrl) {
         this.id = id;
         this.name = name;
-        this.roadId = roadId;
-        this.xpos = xpos;
-        this.ypos = ypos;
+        this.road = road;
+        this.posX = xpos;
+        this.posY = ypos;
         this.imageUrl = imageUrl;
     }
+
 }
