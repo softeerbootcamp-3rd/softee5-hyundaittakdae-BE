@@ -1,14 +1,14 @@
-server:
-  port: 80 # ?? ?? ????
+#server:
+#  port: 80 # ?? ?? ????
 
 spring:
   # H2 Database ??
   datasource:
     driver-class-name: org.h2.Driver
     #url: 'jdbc:h2:mem:test'   # H2 DB ?? ?? (In-Memory Mode)
-    url: 'jdbc:h2:~/test'    # H2 DB ?? ?? (Embedded Mode)
+    url: 'jdbc:h2:tcp://localhost/~/test'    # H2 DB ?? ?? (Embedded Mode)
     username: username       # H2 DB ?? ID (??? ??)
-    password: 1234        # H2 DB ?? PW (??? ??)
+    password: 6666        # H2 DB ?? PW (??? ??)
 
   # H2 Console ??
   h2:
@@ -20,7 +20,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update       # DB ??? ?? (none, create, create-drop, update, validate)
+      ddl-auto: create       # DB ??? ?? (none, create, create-drop, update, validate)
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
