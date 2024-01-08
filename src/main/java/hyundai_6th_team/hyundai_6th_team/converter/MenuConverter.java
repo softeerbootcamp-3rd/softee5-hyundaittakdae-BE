@@ -26,4 +26,9 @@ public class MenuConverter {
 
         return new RestaurantResponse.MenuListDTO(menuDTOList);
     }
+
+    public static RestaurantResponse.MenuNameDTO toMenuNameDTO(Menu menu) {
+        return new RestaurantResponse.MenuNameDTO(menu.getId(), menu.getName());
+    }
+
 }

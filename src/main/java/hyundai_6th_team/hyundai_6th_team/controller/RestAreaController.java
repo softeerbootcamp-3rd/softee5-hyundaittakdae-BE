@@ -2,6 +2,8 @@ package hyundai_6th_team.hyundai_6th_team.controller;
 
 import hyundai_6th_team.hyundai_6th_team.apiPayload.ApiResponse;
 import hyundai_6th_team.hyundai_6th_team.converter.MenuConverter;
+import hyundai_6th_team.hyundai_6th_team.converter.RestAreaConverter;
+import hyundai_6th_team.hyundai_6th_team.dto.response.RestAreaResponse;
 import hyundai_6th_team.hyundai_6th_team.dto.response.RestaurantResponse;
 import hyundai_6th_team.hyundai_6th_team.entity.Menu;
 import hyundai_6th_team.hyundai_6th_team.entity.Restaurant;
@@ -32,5 +34,14 @@ public class RestAreaController {
     public ApiResponse<RestaurantResponse.MenuListDTO> getMenuList(@Valid @PathVariable(name = "restaurantId") Long restaurantId){
         List<Menu> menuList = restaurantsService.findMenu(restaurantId);
         return ApiResponse.onSuccess(MenuConverter.toMenuListDTO(menuList));
+    }
+
+    @GetMapping("/{restAreaId}/restaurants")
+    @Operation(summary = "휴게소 식당목록 및 메뉴목록 조회 API",description = "특정 휴게소의 식당목록과 각 식당의 메뉴목록을 조회하는 API입니다.")
+    @Parameters({
+            @Parameter(name = "restAreaId", description = "휴게소Id, path variable 입니다.")
+    })
+    public ApiResponse<List<RestAreaResponse.RestaurantMenuListDTO>> getRestaurantMenuList(@Valid @PathVariable(name = "restAreaId") Long restAreaId){
+        return ApiResponse.onSuccess(restaurantsService.findRestAreaRestaurantMenus(restAreaId));
     }
 }

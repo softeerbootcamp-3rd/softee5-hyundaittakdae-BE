@@ -27,4 +27,13 @@ public class RestaurantResponse {
         List<MenuDTO> menuDTOList;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MenuNameDTO{
+        Long id;
+        String name;
+    }
+
 }
