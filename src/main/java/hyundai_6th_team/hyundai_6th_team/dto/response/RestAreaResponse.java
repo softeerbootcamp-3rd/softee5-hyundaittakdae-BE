@@ -32,6 +32,14 @@ public class RestAreaResponse {
         
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class RestaurantNameDTO{
+        Long restaurantId;
+        String restaurantName;
+    }
 
 
 }

@@ -3,6 +3,7 @@ package hyundai_6th_team.hyundai_6th_team.controller;
 import hyundai_6th_team.hyundai_6th_team.apiPayload.ApiResponse;
 import hyundai_6th_team.hyundai_6th_team.converter.MenuConverter;
 import hyundai_6th_team.hyundai_6th_team.converter.RestAreaConverter;
+import hyundai_6th_team.hyundai_6th_team.converter.RestaurantConverter;
 import hyundai_6th_team.hyundai_6th_team.dto.response.RestAreaResponse;
 import hyundai_6th_team.hyundai_6th_team.dto.response.RestaurantResponse;
 import hyundai_6th_team.hyundai_6th_team.entity.Menu;
@@ -72,4 +73,12 @@ public class RestAreaController {
     }
 
 
+    @GetMapping("/{restAreaId}/restaurants/names")
+    @Operation(summary = "휴게소 식당목록 조회 API",description = "특정 휴게소의 식당목록을 조회하는 API입니다.")
+    @Parameters({
+            @Parameter(name = "restAreaId", description = "휴게소Id, path variable 입니다.")
+    })
+    public ApiResponse<List<RestAreaResponse.RestaurantNameDTO>> getRestaurantNameList(@Valid @PathVariable(name = "restAreaId") Long restAreaId){
+        return ApiResponse.onSuccess(RestaurantConverter.toRestaurantNameDTOList(restaurantsService.findRestaurantList(restAreaId)));
+    }
 }
