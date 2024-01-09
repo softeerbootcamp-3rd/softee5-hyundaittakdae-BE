@@ -26,6 +26,7 @@ public class AmazonS3Service {
     public String upload(MultipartFile multipartFile, String dirName) throws IOException {
         File uploadFile = convert(multipartFile)
                 .orElseThrow(() -> new IllegalArgumentException("MultipartFile -> File로 전환이 실패했습니다."));
+
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(multipartFile.getSize());
         metadata.setContentType(multipartFile.getContentType());
@@ -35,7 +36,6 @@ public class AmazonS3Service {
 
     private String upload(File uploadFile, String dirName, String originalName, ObjectMetadata metadata) {
         String fileName = dirName + "/" + UUID.randomUUID() + originalName;
-
         String uploadImageUrl = putS3(uploadFile, fileName, metadata);
         removeNewFile(uploadFile);
         return uploadImageUrl;
@@ -43,7 +43,7 @@ public class AmazonS3Service {
 
     private String putS3(File uploadFile, String fileName, ObjectMetadata metadata) {
         amazonS3Client.putObject(new PutObjectRequest(bucket, fileName, uploadFile)
-                        .withMetadata(metadata)
+                .withMetadata(metadata)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
         return amazonS3Client.getUrl(bucket, fileName).toString();
     }
