@@ -74,7 +74,7 @@ public class MenuService {
 
         // Convert to DTO and add to the result list
         List<RestaurantResponse.MenuDTO> top3MenuDTOs = top3.stream()
-                .map(menu -> new RestaurantResponse.MenuDTO(menu.getName(), getAvg(menu).toString(), menu.getPrice().toString()))
+                .map(menu -> new RestaurantResponse.MenuDTO(menu.getName(), getAvg(menu).toString(), menu.getPrice().toString(), menu.getImageUrl()))
                 .collect(Collectors.toList());
 
         top3Menus.addAll(top3MenuDTOs);
@@ -98,6 +98,9 @@ public class MenuService {
     }
 
 
+
+
 }
+
 
 
