@@ -21,7 +21,10 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
             "ORDER BY AVG(r.rating) DESC")
     List<RestArea> findRestAreaIdWithHighestAverageRating(@Param("minTag") ReviewTag minTag);
 
+
     List<Review> findAllByRestAreaId(@Param("restAreaId") Long id);
 
+
+    List<Review> findByRestAreaId(Long restAreaId);
 
 }
