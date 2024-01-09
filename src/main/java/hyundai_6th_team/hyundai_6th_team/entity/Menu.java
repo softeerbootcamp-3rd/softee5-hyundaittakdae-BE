@@ -47,4 +47,6 @@ public class Menu extends BaseEntity {
                 .orElse(0.0); // 평균 계산, 값이 없는 경우 0을 반환
     }
 
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
 }
