@@ -81,6 +81,7 @@ public class RestAreaService {
 
 
 
+    /*
     private final AmazonS3Service amazonS3Service;
 
     @Transactional
@@ -91,6 +92,8 @@ public class RestAreaService {
         restAreaRepository.save(restArea);
         return imageUrl;
     }
+
+     */
 
 
 }

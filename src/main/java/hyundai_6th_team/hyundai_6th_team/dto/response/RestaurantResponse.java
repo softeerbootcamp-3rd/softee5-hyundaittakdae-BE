@@ -17,6 +17,7 @@ public class RestaurantResponse {
         String name;
         String rating;
         String price;
+        String imageUrl;
     }
 
     @Builder
