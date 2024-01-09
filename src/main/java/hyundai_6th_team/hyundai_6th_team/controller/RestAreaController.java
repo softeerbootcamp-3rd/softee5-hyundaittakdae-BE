@@ -32,21 +32,21 @@ public class RestAreaController {
     private final MenuService menuService;
 
     @GetMapping("/restaurants/{restaurantId}/menus")
-    @Operation(summary = "식당의 인기 메뉴 목록 조회 API",description = "특정 식당의 별점순 상위 3개의 메뉴를 조회하는 API입니다.")
+    @Operation(summary = "식당의 인기 메뉴 목록 조회 API", description = "특정 식당의 별점순 상위 3개의 메뉴를 조회하는 API입니다.")
     @Parameters({
             @Parameter(name = "restaurantId", description = "식당Id, path variable 입니다.")
     })
-    public ApiResponse<RestaurantResponse.MenuListDTO> getMenuList(@Valid @PathVariable(name = "restaurantId") Long restaurantId){
+    public ApiResponse<RestaurantResponse.MenuListDTO> getMenuList(@Valid @PathVariable(name = "restaurantId") Long restaurantId) {
         List<Menu> menuList = restaurantsService.findMenu(restaurantId);
         return ApiResponse.onSuccess(MenuConverter.toMenuListDTO(menuList));
     }
 
     @GetMapping("/{restAreaId}/restaurants")
-    @Operation(summary = "휴게소 식당목록 및 메뉴목록 조회 API",description = "특정 휴게소의 식당목록과 각 식당의 메뉴목록을 조회하는 API입니다.")
+    @Operation(summary = "휴게소 식당목록 및 메뉴목록 조회 API", description = "특정 휴게소의 식당목록과 각 식당의 메뉴목록을 조회하는 API입니다.")
     @Parameters({
             @Parameter(name = "restAreaId", description = "휴게소Id, path variable 입니다.")
     })
-    public ApiResponse<List<RestAreaResponse.RestaurantMenuListDTO>> getRestaurantMenuList(@Valid @PathVariable(name = "restAreaId") Long restAreaId){
+    public ApiResponse<List<RestAreaResponse.RestaurantMenuListDTO>> getRestaurantMenuList(@Valid @PathVariable(name = "restAreaId") Long restAreaId) {
         return ApiResponse.onSuccess(restaurantsService.findRestAreaRestaurantMenus(restAreaId));
     }
 
@@ -56,9 +56,21 @@ public class RestAreaController {
     @Parameters({
             @Parameter(name = "restAreaId", description = "휴게소Id, path variable 입니다.")
     })
-    public ApiResponse<RestAreaResponse.RestAreaInfoDTO> getRestAreaInfo(@Valid @PathVariable(name = "restAreaId") Long restAreaId){
+    public ApiResponse<RestAreaResponse.RestAreaInfoDTO> getRestAreaInfo(@Valid @PathVariable(name = "restAreaId") Long restAreaId) {
 
         return ApiResponse.onSuccess(restAreaService.findRestAreaInfo(restAreaId));
+    }
+
+    @GetMapping("/{themeNum}")
+    @Operation(summary = "휴게소 목록 조회 (거리별 OR 테마별)", description = "넘겨주는 id 값에 따라 휴게소 목록을 조회하는 API")
+    @Parameter(name = "themeNum", description =  "모든 휴게소 = 0\n" +
+                                                "음식이 맛있어요 = 1\n" +
+                                                "시설이 편리해요 = 2\n" +
+                                                "화장실이 깨끗해요 = 3\n" +
+                                                "분위기가 좋아요 = 4")
+    public ApiResponse getRestAreaList(@PathVariable Long themeNum) {
+
+        return restAreaService.findRestAreaList(themeNum);
     }
 
     @GetMapping("/{restAreaId}/stores")
@@ -70,6 +82,7 @@ public class RestAreaController {
     public ApiResponse<List<RestaurantResponse.MenuDTO>> findTop3MenuByRestArea(@Valid @PathVariable(name = "restAreaId") Long restAreaId){
 
         return ApiResponse.onSuccess(menuService.findTop3MenuByRestArea(restAreaId));
+
     }
 
 
