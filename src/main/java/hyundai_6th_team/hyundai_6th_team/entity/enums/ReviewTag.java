@@ -40,4 +40,16 @@ public enum ReviewTag {
         }
     }
 
+    public static ReviewTag getByIndex(Long index) {
+        if (index == 1) {
+            return FOOD;
+        } else if (index == 2) {
+            return AMENITIES;
+        } else if (index == 3) {
+            return RESTROOM;
+        } else if (index == 4) {
+            return VIBE;
+        }
+        throw new IllegalArgumentException("Invalid index: " + index);
+    }
 }
