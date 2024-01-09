@@ -4,6 +4,8 @@ import hyundai_6th_team.hyundai_6th_team.entity.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -28,6 +30,11 @@ public class RestArea extends BaseEntity {
     @Column(nullable = false, length = 15)
     private String phone;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Review> reviews;
+
     private String imageUrl;
+
+    private String name;
 
 }
