@@ -72,6 +72,7 @@ public class RestAreaService {
                                 .id(restAreaId)
                                 .name(restArea.getName())
                                 .roadName(restArea.getRoad().getName())
+                .imageUrl(restArea.getImageUrl())
                                 .amenities(amenities)
                                 .build();
     }
