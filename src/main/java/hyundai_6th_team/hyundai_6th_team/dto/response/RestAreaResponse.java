@@ -15,6 +15,7 @@ public class RestAreaResponse {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class RestaurantMenuListDTO{
+        Long restaurantId;
         String restaurantName;
         List<RestaurantResponse.MenuNameDTO> menuNameDTOList;
     }
