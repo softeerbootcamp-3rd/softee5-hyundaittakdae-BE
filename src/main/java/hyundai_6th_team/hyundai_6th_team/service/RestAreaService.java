@@ -138,12 +138,46 @@ public class RestAreaService {
 
             }
 
-        } else { // 테마 1~4면 가져온 휴게소의 리뷰=:테마번호의 리뷰값들의 평균 기준 내림차순
+        }
+        else { // 테마 1~4면 가져온 휴게소의 리뷰=:테마번호의 리뷰값들의 평균 기준 내림차순
 
             //테마 번호로 조회 후 테마번호의 리뷰값 평균기준으로 내림차순
             ReviewTag reviewTag = ReviewTag.getByIndex(themeNum);
-            List<Object[]> restAreasOrderByRatingAvg = restAreaRepository.findRestAreasOrderByRatingAvg(reviewTag);
-            for (Object[] restAreaWithAvgs : restAreasOrderByRatingAvg) {
+            List<Object[]> rows = restAreaRepository.findAverageRatingByTag(reviewTag);
+            for (Object[] row : rows) {
+                Long raId = (Long) row[0];
+                Double avgRating = (Double) row[1];
+                RestArea restArea = restAreaRepository.findById(raId).get();
+
+                String themeName = "";
+                if (themeNum == 1) {
+                    themeName = "음식이 맛있어요";
+                }
+                if (themeNum == 2) {
+                    themeName = "시설이 편리해요";
+                }
+                if (themeNum == 3) {
+                    themeName = "화장실이 깨끗해요";
+                }
+                if (themeNum == 4) {
+                    themeName = "분위기가 특별해요";
+                }
+
+                //전체 평균값
+                List<Review> reviews = reviewRepository.findAllByRestAreaId(restArea.getId());
+                double totalRating = geAvgTotalRating(reviews);
+
+                // dtos에 추가
+                restAreaDtos.add(RestAreaResponse.RestAreaListDto.builder()
+                        .id(restArea.getId()) // 휴게소 id
+                        .restAreaName(restArea.getName()) // 휴게소 이름
+                        .totalRating(String.format("%.1f", totalRating)) // 전체 평점
+                        .distance(String.valueOf(dis[idx++])) // 거리
+                        .themeName(themeName) // 어떤 평점의 평균이 높은지
+                        .imageUrl(restArea.getImageUrl())
+                        .roadName(restArea.getRoad().getName())
+                        .themeRating(String.format("%.1f", avgRating)) // 가장 높은 평점의 평균
+                        .build());
             }
 
 

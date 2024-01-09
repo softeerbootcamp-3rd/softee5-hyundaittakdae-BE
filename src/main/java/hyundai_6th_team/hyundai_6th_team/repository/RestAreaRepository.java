@@ -18,13 +18,11 @@ public interface RestAreaRepository extends JpaRepository<RestArea, Long> {
     @Query("select ra from RestArea ra join Review r on ra.id = r.restArea.id order by ra.posX")
     List<RestArea> findRestAreasOrderByPosX();
 
-    @Query("SELECT ra, AVG(r.rating) AS avgRating " +
-            "FROM RestArea ra " +
-            "JOIN ra.reviews r " +
+    @Query("SELECT ra.id, AVG(r.rating) AS average_rating " +
+            "FROM Review r " +
+            "JOIN RestArea ra ON r.restArea.id = ra.id " +
             "WHERE r.tag = :tag " +
             "GROUP BY ra.id " +
-            "ORDER BY avgRating DESC")
-    List<Object[]> findRestAreasOrderByRatingAvg(@Param("tag") ReviewTag tag);
-
-
+            "ORDER BY average_rating DESC")
+    List<Object[]> findAverageRatingByTag(@Param("tag") ReviewTag tag);
 }
