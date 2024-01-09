@@ -32,6 +32,20 @@ public class RestAreaResponse {
         
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class RestAreaListDto{
+        Long id;
+        String imageUrl;
+        String distance;
+        String themeName;
+        String themeRating;
+        String restAreaName;
+        String roadName;
+        String totalRating;
 
+    }
 
 }

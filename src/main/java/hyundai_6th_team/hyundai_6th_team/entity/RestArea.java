@@ -47,7 +47,7 @@ public class RestArea extends BaseEntity {
     }
 
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "amenities_id")
     private Amenities amenities;
 
