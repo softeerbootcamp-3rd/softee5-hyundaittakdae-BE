@@ -18,10 +18,12 @@ public class RestAreaService {
     private final AmazonS3Service amazonS3Service;
     private final RestAreaRepository restAreaRepository;
 
+    @Transactional
     public String uploadImage(MultipartFile image, Long restAreaId) throws IOException {
         RestArea restArea = restAreaRepository.findById(restAreaId).orElseThrow(() ->  new GeneralHandler(ErrorStatus.RESTAREA_NOT_FOUND));
         String imageUrl = amazonS3Service.upload(image, "restArea");
         restArea.setImageUrl(imageUrl);
+        restAreaRepository.save(restArea);
         return imageUrl;
     }
 }
