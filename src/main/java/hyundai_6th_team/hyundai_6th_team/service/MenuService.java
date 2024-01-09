@@ -28,9 +28,8 @@ import static java.lang.Math.max;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class MenuService {
-    //private final AmazonS3Service amazonS3Service;
+    private final AmazonS3Service amazonS3Service;
     private final MenuRepository menuRepository;
-
     private final RestaurantRepository restaurantRepository;
 
 
