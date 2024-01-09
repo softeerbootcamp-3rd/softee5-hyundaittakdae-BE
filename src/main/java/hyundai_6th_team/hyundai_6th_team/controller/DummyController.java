@@ -2,6 +2,7 @@ package hyundai_6th_team.hyundai_6th_team.controller;
 
 import hyundai_6th_team.hyundai_6th_team.apiPayload.ApiResponse;
 import hyundai_6th_team.hyundai_6th_team.service.AmazonS3Service;
+import hyundai_6th_team.hyundai_6th_team.service.MenuService;
 import hyundai_6th_team.hyundai_6th_team.service.RestAreaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -23,6 +24,7 @@ import java.util.UUID;
 @RequestMapping("/dummys")
 public class DummyController {
     private final RestAreaService restAreaService;
+    private final MenuService menuService;
 
     @PatchMapping(value = "/rest-areas/{restAreaId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "휴게소 사진 업로드 API", description = "더미데이터 저장에 이용되는 휴게소 사진 업로드 API입니다.")
@@ -32,6 +34,16 @@ public class DummyController {
     public ApiResponse<String> modifyRestAreaImage(@RequestPart(value = "restAreaImage") MultipartFile image,
                                                    @PathVariable(name = "restAreaId") Long restAreaId) throws IOException {
         return ApiResponse.onSuccess(restAreaService.uploadImage(image, restAreaId));
+    }
+
+    @PatchMapping(value = "/menus/{menuId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(summary = "메뉴 사진 업로드 API", description = "더미데이터 저장에 이용되는 메뉴 사진 업로드 API입니다.")
+    @Parameters({
+            @Parameter(name = "menuId", description = "메뉴Id, path variable입니다.")
+    })
+    public ApiResponse<String> modifyMenuImage(@RequestPart(value = "menuImage") MultipartFile image,
+                                               @PathVariable(name = "menuId") Long menuId) throws IOException{
+        return ApiResponse.onSuccess(menuService.uploadImage(image, menuId));
     }
 
 }
