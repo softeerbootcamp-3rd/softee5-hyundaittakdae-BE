@@ -30,4 +30,5 @@ public class RestArea extends BaseEntity {
 
     private String imageUrl;
 
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
