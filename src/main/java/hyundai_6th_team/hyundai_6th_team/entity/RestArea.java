@@ -4,6 +4,9 @@ import hyundai_6th_team.hyundai_6th_team.entity.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -32,6 +35,7 @@ public class RestArea extends BaseEntity {
     private String phone;
 
     private String imageUrl;
+
     @Builder
     public RestArea(Long id, String name, Road road, float xpos, float ypos, String imageUrl) {
         this.id = id;
@@ -42,4 +46,8 @@ public class RestArea extends BaseEntity {
         this.imageUrl = imageUrl;
     }
 
+
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "amenities_id")
+    private Amenities amenities;
 }

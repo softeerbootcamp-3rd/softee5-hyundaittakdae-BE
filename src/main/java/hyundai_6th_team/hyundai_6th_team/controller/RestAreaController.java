@@ -7,6 +7,7 @@ import hyundai_6th_team.hyundai_6th_team.dto.response.RestAreaResponse;
 import hyundai_6th_team.hyundai_6th_team.dto.response.RestaurantResponse;
 import hyundai_6th_team.hyundai_6th_team.entity.Menu;
 import hyundai_6th_team.hyundai_6th_team.entity.Restaurant;
+import hyundai_6th_team.hyundai_6th_team.service.RestAreaService;
 import hyundai_6th_team.hyundai_6th_team.service.RestaurantService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,6 +26,7 @@ import java.util.List;
 public class RestAreaController {
 
     private final RestaurantService restaurantsService;
+    private final RestAreaService restAreaService;
 
     @GetMapping("/restaurants/{restaurantId}/menus")
     @Operation(summary = "식당의 인기 메뉴 목록 조회 API",description = "특정 식당의 별점순 상위 3개의 메뉴를 조회하는 API입니다.")
@@ -44,4 +46,17 @@ public class RestAreaController {
     public ApiResponse<List<RestAreaResponse.RestaurantMenuListDTO>> getRestaurantMenuList(@Valid @PathVariable(name = "restAreaId") Long restAreaId){
         return ApiResponse.onSuccess(restaurantsService.findRestAreaRestaurantMenus(restAreaId));
     }
+
+
+    @GetMapping("/{restAreaId}/details")
+    @Operation(summary = "휴게소 상세 조회 API", description = "휴게소 id를 주면 관련 구체적인 정보들을 조회하는 API입니다.")
+    @Parameters({
+            @Parameter(name = "restAreaId", description = "휴게소Id, path variable 입니다.")
+    })
+    public ApiResponse<RestAreaResponse.RestAreaInfoDTO> getRestAreaInfo(@Valid @PathVariable(name = "restAreaId") Long restAreaId){
+
+        return ApiResponse.onSuccess(restAreaService.findRestAreaInfo(restAreaId));
+    }
+
+
 }

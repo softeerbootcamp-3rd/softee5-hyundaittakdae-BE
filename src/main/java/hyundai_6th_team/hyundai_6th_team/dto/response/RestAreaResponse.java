@@ -1,5 +1,6 @@
 package hyundai_6th_team.hyundai_6th_team.dto.response;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,4 +18,20 @@ public class RestAreaResponse {
         String restaurantName;
         List<RestaurantResponse.MenuNameDTO> menuNameDTOList;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class RestAreaInfoDTO{
+        Long id;
+        String imageUrl;
+        String roadName;
+        String name;
+        String amenities;
+        
+    }
+
+
+
 }
