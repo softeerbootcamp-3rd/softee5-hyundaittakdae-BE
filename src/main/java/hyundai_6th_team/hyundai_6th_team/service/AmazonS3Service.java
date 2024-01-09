@@ -51,6 +51,7 @@ public class AmazonS3Service {
         } else {
             System.out.println("파일이 삭제되지 못했습니다.");
         }
+
     }
 
     private Optional<File> convert(MultipartFile file) throws IOException {
