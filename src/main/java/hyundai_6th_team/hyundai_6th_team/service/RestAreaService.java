@@ -69,12 +69,12 @@ public class RestAreaService {
         }
 
         return RestAreaResponse.RestAreaInfoDTO.builder()
-                                .id(restAreaId)
-                                .name(restArea.getName())
-                                .roadName(restArea.getRoad().getName())
+                .id(restAreaId)
+                .name(restArea.getName())
+                .roadName(restArea.getRoad().getName())
                 .imageUrl(restArea.getImageUrl())
-                                .amenities(amenities)
-                                .build();
+                .amenities(amenities)
+                .build();
     }
 
 
