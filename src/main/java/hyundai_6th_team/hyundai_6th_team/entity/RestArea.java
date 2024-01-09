@@ -50,8 +50,8 @@ public class RestArea extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "amenities_id")
     private Amenities amenities;
-}
 
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
+
 
