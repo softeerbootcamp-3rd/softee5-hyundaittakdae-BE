@@ -1,4 +1,4 @@
-/*
+
 package hyundai_6th_team.hyundai_6th_team.config;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -30,4 +30,3 @@ public class AmazonS3Config {
     }
 }
 
-*/

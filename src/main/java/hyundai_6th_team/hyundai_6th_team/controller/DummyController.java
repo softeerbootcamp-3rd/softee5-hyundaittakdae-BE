@@ -27,7 +27,7 @@ public class DummyController {
     private final RestAreaService restAreaService;
     private final MenuService menuService;
 
-    /*
+
     @PatchMapping(value = "/rest-areas/{restAreaId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "휴게소 사진 업로드 API", description = "더미데이터 저장에 이용되는 휴게소 사진 업로드 API입니다.")
     @Parameters({
@@ -39,8 +39,7 @@ public class DummyController {
     }
 
 
-     */
-    /*
+
     @PatchMapping(value = "/menus/{menuId}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "메뉴 사진 업로드 API", description = "더미데이터 저장에 이용되는 메뉴 사진 업로드 API입니다.")
     @Parameters({
@@ -52,7 +51,7 @@ public class DummyController {
     }
 
 
-     */
+
 }
 
 

@@ -88,7 +88,7 @@ public class MenuService {
     }
 
 
-    /*
+
     @Transactional
     public String uploadImage(MultipartFile image, Long menuId) throws IOException {
         Menu menu = menuRepository.findById(menuId).orElseThrow(() ->  new GeneralHandler(ErrorStatus.MENU_NOT_FOUND));
@@ -98,7 +98,7 @@ public class MenuService {
         return imageUrl;
     }
 
-     */
+
 
 
 }
