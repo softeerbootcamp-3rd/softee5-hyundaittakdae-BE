@@ -70,6 +70,7 @@ public class RestAreaController {
     public ApiResponse getRestAreaList(@PathVariable Long themeNum) {
 
         return restAreaService.findRestAreaList(themeNum);
+    }
 
     @GetMapping("/{restAreaId}/stores")
     @Operation(summary = "휴게소 인기 메뉴 3개 API", description = "휴게소 id를 주면 관련 구체적인 메뉴 3개 정보들을 조회하는 API입니다.")
