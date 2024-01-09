@@ -1,15 +1,23 @@
 package hyundai_6th_team.hyundai_6th_team.controller;
 
 import hyundai_6th_team.hyundai_6th_team.apiPayload.ApiResponse;
+import hyundai_6th_team.hyundai_6th_team.converter.MenuConverter;
+import hyundai_6th_team.hyundai_6th_team.dto.response.RestaurantResponse;
+import hyundai_6th_team.hyundai_6th_team.dto.response.ReviewResponse;
+import hyundai_6th_team.hyundai_6th_team.entity.Menu;
 import hyundai_6th_team.hyundai_6th_team.service.ReviewService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Tag(name = "휴게소 후기 API")
 @RestController
@@ -47,5 +55,14 @@ public class ReviewController {
                                           @PathVariable Long menuId,
                                           Float rating) {
         return reviewService.addReviewAndRating(food, amenities, restRoom, vibe, restAreaId, menuId, rating);
+    }
+
+    @Operation(summary = "휴게소 후기 조회 API",description = "특정 휴게소의 후기(제일 높은 평점, 제일 낮은 평점, 전체 평점, 전체 후기 수)를 조회하는 API입니다.")
+    @GetMapping("/rest-areas/{restAreaId}/reviews")
+    @Parameters({
+            @Parameter(name = "restAreaId", description = "휴게소Id, path variable 입니다.")
+    })
+    public ApiResponse<ReviewResponse.RestAreaReviewDTO> getReviewAndRating(@PathVariable(name = "restAreaId") Long restAreaId){
+        return ApiResponse.onSuccess(reviewService.getRestAreaReview(restAreaId));
     }
 }
