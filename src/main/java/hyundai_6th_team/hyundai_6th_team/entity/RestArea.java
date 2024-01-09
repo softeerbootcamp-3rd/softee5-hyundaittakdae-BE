@@ -51,3 +51,7 @@ public class RestArea extends BaseEntity {
     @JoinColumn(name = "amenities_id")
     private Amenities amenities;
 }
+
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+}
+
