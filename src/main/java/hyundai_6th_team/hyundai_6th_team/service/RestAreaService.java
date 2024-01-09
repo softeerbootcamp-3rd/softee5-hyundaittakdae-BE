@@ -1,7 +1,7 @@
 package hyundai_6th_team.hyundai_6th_team.service;
 
 
-import hyundai_6th_team.hyundai_6th_team.Repository.RestAreaRepository;
+import hyundai_6th_team.hyundai_6th_team.repository.RestAreaRepository;
 import hyundai_6th_team.hyundai_6th_team.dto.response.RestAreaResponse;
 import hyundai_6th_team.hyundai_6th_team.entity.Amenities;
 import hyundai_6th_team.hyundai_6th_team.entity.RestArea;
@@ -77,7 +77,6 @@ public class RestAreaService {
     }
 
     private final AmazonS3Service amazonS3Service;
-    private final RestAreaRepository restAreaRepository;
 
     @Transactional
     public String uploadImage(MultipartFile image, Long restAreaId) throws IOException {

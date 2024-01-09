@@ -4,8 +4,7 @@ import hyundai_6th_team.hyundai_6th_team.entity.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Getter
@@ -13,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class RestArea extends BaseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -50,8 +48,9 @@ public class RestArea extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "amenities_id")
     private Amenities amenities;
-}
 
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
+
+
 
