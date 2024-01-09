@@ -31,6 +31,15 @@ public class RestAreaResponse {
         String amenities;
         
     }
+  
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class RestaurantNameDTO{
+        Long restaurantId;
+        String restaurantName;
+    }
 
     @Builder
     @Getter
@@ -45,7 +54,6 @@ public class RestAreaResponse {
         String restAreaName;
         String roadName;
         String totalRating;
-
     }
 
 }
