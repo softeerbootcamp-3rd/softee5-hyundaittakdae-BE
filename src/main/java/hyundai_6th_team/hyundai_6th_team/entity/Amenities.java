@@ -15,9 +15,6 @@ public class Amenities extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restArea_id")
-    private RestArea restArea;
 
     @Column(nullable = false, columnDefinition = "boolean default false")
     private Boolean isNursingRoom;
@@ -29,10 +26,10 @@ public class Amenities extends BaseEntity {
     private Boolean isLPG;
 
     @Column(nullable = false, columnDefinition = "boolean default false")
-    private Boolean isElectric;
+    private Boolean isElectric; //전기차충전소
 
     @Column(nullable = false, columnDefinition = "boolean default false")
-    private Boolean isTransfer;
+    private Boolean isTransfer; //버스환승가능
 
     @Column(nullable = false, columnDefinition = "boolean default false")
     private Boolean isPharmacy;
