@@ -12,9 +12,7 @@ import lombok.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import hyundai_6th_team.hyundai_6th_team.apiPayload.code.statusEnums.ErrorStatus;
 import hyundai_6th_team.hyundai_6th_team.apiPayload.exception.handler.GeneralHandler;
@@ -146,6 +144,12 @@ public class RestAreaService {
 
         }
         else { // 테마 1~4면 가져온 휴게소의 리뷰=:테마번호의 리뷰값들의 평균 기준 내림차순
+            ArrayList<Double> disList = new ArrayList<>();
+            for (double di : dis) {
+                disList.add(di);
+            }
+            Collections.shuffle(disList);
+            Queue<Double> q = new LinkedList<>(disList);
 
             //테마 번호로 조회 후 테마번호의 리뷰값 평균기준으로 내림차순
             ReviewTag reviewTag = ReviewTag.getByIndex(themeNum);
@@ -178,7 +182,7 @@ public class RestAreaService {
                         .id(restArea.getId()) // 휴게소 id
                         .restAreaName(restArea.getName()) // 휴게소 이름
                         .totalRating(String.format("%.1f", totalRating)) // 전체 평점
-                        .distance(String.valueOf(dis[idx++])) // 거리
+                        .distance(String.valueOf(q.poll())) // 거리
                         .themeName(themeName) // 어떤 평점의 평균이 높은지
                         .imageUrl(restArea.getImageUrl())
                         .roadName(restArea.getRoad().getName())
