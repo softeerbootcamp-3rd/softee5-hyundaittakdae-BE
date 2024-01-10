@@ -1,6 +1,6 @@
 package hyundai_6th_team.hyundai_6th_team.service;
 
-import hyundai_6th_team.hyundai_6th_team.Repository.RestAreaRepository;
+import hyundai_6th_team.hyundai_6th_team.repository.RestAreaRepository;
 import hyundai_6th_team.hyundai_6th_team.converter.RestAreaConverter;
 import hyundai_6th_team.hyundai_6th_team.dto.response.RestAreaResponse;
 import hyundai_6th_team.hyundai_6th_team.entity.*;
@@ -36,7 +36,9 @@ public class RestaurantService {
                 .collect(Collectors.toList());
     }
 
-
+    public List<Restaurant> findRestaurantList(Long restAreaId){
+        return restaurantRepository.findByRestAreaId(restAreaId);
+    }
 
 
 

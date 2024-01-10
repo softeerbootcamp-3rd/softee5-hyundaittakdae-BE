@@ -3,8 +3,6 @@ package hyundai_6th_team.hyundai_6th_team.entity;
 import hyundai_6th_team.hyundai_6th_team.entity.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class RestArea extends BaseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,6 +31,9 @@ public class RestArea extends BaseEntity {
     @Column(nullable = false, length = 15)
     private String phone;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Review> reviews;
+
     private String imageUrl;
 
     @Builder
@@ -47,11 +47,9 @@ public class RestArea extends BaseEntity {
     }
 
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "amenities_id")
     private Amenities amenities;
 
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
-
-

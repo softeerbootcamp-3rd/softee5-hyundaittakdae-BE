@@ -25,8 +25,9 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // 휴게소
     RESTAREA_NOT_FOUND(HttpStatus.BAD_REQUEST, "RESTAREA4001", "존재하지 않는 휴게소 ID 입니다."),
+    RESTAREA_REVIEW_NOT_FOUND(HttpStatus.BAD_REQUEST, "RESTAREA4002", "휴게소에 작성된 후기가 없습니다."),
 
-    // 휴게소
+    // 메뉴
     MENU_NOT_FOUND(HttpStatus.BAD_REQUEST, "MENU4001", "존재하지 않는 메뉴 ID 입니다.");
 
     private final HttpStatus httpStatus;
