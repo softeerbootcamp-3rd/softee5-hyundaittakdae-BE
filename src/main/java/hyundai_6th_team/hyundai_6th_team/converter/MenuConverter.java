@@ -14,6 +14,7 @@ public class MenuConverter {
                 .name(menu.getName())
                 .rating(String.format("%.1f", menu.calculateAverageRating()))
                 .price(String.valueOf(menu.getPrice()))
+                .imageUrl(menu.getImageUrl())
                 .build();
     }
 

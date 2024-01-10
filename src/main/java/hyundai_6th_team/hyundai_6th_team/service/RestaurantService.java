@@ -36,7 +36,9 @@ public class RestaurantService {
                 .collect(Collectors.toList());
     }
 
-
+    public List<Restaurant> findRestaurantList(Long restAreaId){
+        return restaurantRepository.findByRestAreaId(restAreaId);
+    }
 
 
 

@@ -16,6 +16,7 @@ public class RestAreaConverter {
                 .collect(Collectors.toList());
 
         return RestAreaResponse.RestaurantMenuListDTO.builder()
+                .restaurantId(restaurant.getId())
                 .restaurantName(restaurant.getName())
                 .menuNameDTOList(menuNameDTOList)
                 .build();
