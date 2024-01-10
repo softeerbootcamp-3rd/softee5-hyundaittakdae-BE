@@ -1,4 +1,3 @@
-
 package hyundai_6th_team.hyundai_6th_team.controller;
 
 import hyundai_6th_team.hyundai_6th_team.apiPayload.ApiResponse;
@@ -18,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
+
+
 
 @Tag(name = "더미데이터", description = "더미데이터 관련 API")
 @RestController
@@ -53,5 +54,4 @@ public class DummyController {
 
 
 }
-
 

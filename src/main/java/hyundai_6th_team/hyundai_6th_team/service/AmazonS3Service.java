@@ -73,5 +73,3 @@ public class AmazonS3Service {
         return Optional.empty();
     }
 }
-
-
