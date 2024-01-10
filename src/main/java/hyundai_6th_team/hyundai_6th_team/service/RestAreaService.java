@@ -48,7 +48,7 @@ public class RestAreaService {
         String amenities = "";
         if(restArea.getAmenities().getIsNursingRoom()) amenities += "수유실";
         if(restArea.getAmenities().getIsGasStation()){
-            if(!amenities.isEmpty()) amenities += "|";
+            if(!amenities.isEmpty()) amenities += " | ";
             amenities += "주유소";
         }
         if(restArea.getAmenities().getIsLPG()){
