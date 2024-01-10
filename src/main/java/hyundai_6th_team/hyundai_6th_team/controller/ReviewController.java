@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -34,7 +36,11 @@ public class ReviewController {
             @Parameter(name = "vibe", description = "분위기가 특별해요의 평점."),
             @Parameter(name = "restAreaId", description = "어떤 휴게소의 평점인지.")
     })
-    public ApiResponse addReview(Float food, Float amenities, Float restRoom, Float vibe, @PathVariable Long restAreaId) {
+    public ApiResponse addReview(@RequestParam(name = "food") Float food,
+                                 @RequestParam(name = "amenities") Float amenities,
+                                 @RequestParam(name = "restRoom") Float restRoom,
+                                 @RequestParam(name = "vibe") Float vibe,
+                                 @PathVariable Long restAreaId) {
 
         return reviewService.addReview(food, amenities, restRoom, vibe, restAreaId);
     }
@@ -50,7 +56,10 @@ public class ReviewController {
             @Parameter(name = "menuId", description = "어떤 음식의 평점인지."),
             @Parameter(name = "rating", description = "음식의 평점."),
     })
-    public ApiResponse addReviewAndRating(Float food, Float amenities, Float restRoom, Float vibe,
+    public ApiResponse addReviewAndRating(@RequestParam(name = "food") Float food,
+                                          @RequestParam(name = "amenities") Float amenities,
+                                          @RequestParam(name = "restRoom") Float restRoom,
+                                          @RequestParam(name = "vibe") Float vibe,
                                           @PathVariable Long restAreaId,
                                           @PathVariable Long menuId,
                                           Float rating) {

@@ -93,9 +93,6 @@ public class RestAreaService {
         return imageUrl;
     }
 
-
-
-
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
